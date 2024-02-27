@@ -9,6 +9,8 @@ use App\Http\Requests\Company\UpdateCompanyRequest;
 use App\Services\Company\Database\Models\Company;
 use Carbon\Carbon;
 use Gerfey\Repository\Repository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class CompanyRepository extends Repository
 {
@@ -32,8 +34,7 @@ class CompanyRepository extends Repository
             ->where('id', '=', $id)
             ->first();
 
-        if ($user === null)
-        {
+        if ($user === null) {
             return false;
         }
 
@@ -46,5 +47,28 @@ class CompanyRepository extends Repository
         ]);
 
         return $result->save();
+    }
+
+    public function addAverageRatingCompany(float|int $averageRatingCompany, int $id): Model
+    {
+        $company = $this->createQueryBuilder()
+            ->where('id', '=', $id)
+            ->first();
+
+        $company->fill([
+            'rating_average' => $averageRatingCompany,
+        ]);
+
+        $company->save();
+
+        return $company->first();
+    }
+
+    public function getListTopCompanies(): Collection|array
+    {
+        return $this->createQueryBuilder()
+            ->orderBy('rating_average', 'desc')
+            ->limit(10)
+            ->get();
     }
 }

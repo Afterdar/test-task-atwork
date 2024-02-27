@@ -10,6 +10,7 @@ use App\Http\Requests\Comment\UpdateCommentRequest;
 use App\Services\Comments\Database\Models\Comment;
 use Carbon\Carbon;
 use Gerfey\Repository\Repository;
+use Illuminate\Database\Eloquent\Collection;
 
 class CommentRepository extends Repository
 {
@@ -31,6 +32,7 @@ class CommentRepository extends Repository
     public function updateComment(UpdateCommentRequest $updateCommentRequest): bool
     {
         $comment = $this->createQueryBuilder()
+            ->where('id', '=', $updateCommentRequest['idComment'])
             ->where('user_id', '=', $updateCommentRequest['idUser'])
             ->where('company_id', '=', $updateCommentRequest['idCompany'])
             ->first();
@@ -68,4 +70,26 @@ class CommentRepository extends Repository
         return $comment->delete();
     }
 
+    public function getListCommentsCompany(int $id): Collection|array
+    {
+        return $this->createQueryBuilder()
+            ->where('company_id', '=', $id)
+            ->get();
+    }
+
+    public function getAverageRatingCompany(int $id): float|int
+    {
+        $companiesRating = $this->createQueryBuilder()
+            ->where('company_id', '=', $id)
+            ->get();
+
+        $arrayRating = [];
+
+        foreach ($companiesRating as $company)
+        {
+            $arrayRating[] = $company['rating'];
+        }
+
+        return array_sum($arrayRating) / count($arrayRating);
+    }
 }

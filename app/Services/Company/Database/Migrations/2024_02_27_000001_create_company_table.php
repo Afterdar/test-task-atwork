@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('content');
             $table->string('logo');
+            $table->double('rating_average')->default(0);
             $table->timestamps();
         });
     }

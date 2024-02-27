@@ -14,5 +14,6 @@ class Company extends Model
         'name',
         'content',
         'logo',
+        'rating_average'
     ];
 }

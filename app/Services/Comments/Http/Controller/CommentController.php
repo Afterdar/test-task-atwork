@@ -8,6 +8,7 @@ use App\Http\Requests\Comment\AddCommentRequest;
 use App\Http\Requests\Comment\DeleteCommentRequest;
 use App\Http\Requests\Comment\UpdateCommentRequest;
 use App\Services\Comments\Database\Repository\CommentRepository;
+use App\Services\Company\Database\Repository\CompanyRepository;
 use Exception;
 use Gerfey\ResponseBuilder\ResponseBuilder;
 use Illuminate\Http\JsonResponse;
@@ -16,10 +17,12 @@ use Illuminate\Routing\Controller as BaseController;
 class CommentController extends BaseController
 {
     private CommentRepository $commentRepository;
+    private CompanyRepository $companyRepository;
 
-    public function __construct(CommentRepository $commentRepository)
+    public function __construct(CommentRepository $commentRepository, CompanyRepository $companyRepository)
     {
         $this->commentRepository = $commentRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     public function addComment(AddCommentRequest $addCommentRequest): JsonResponse
@@ -53,5 +56,32 @@ class CommentController extends BaseController
         }
 
         return ResponseBuilder::success(['Комментарий удален']);
+    }
+
+    public function getListCommentsCompany(int $id): JsonResponse
+    {
+        $listComments = $this->commentRepository->getListCommentsCompany($id);
+
+        if (empty($listComments->toArray())) {
+            throw new Exception('У компании нет комментариев');
+        }
+
+        return ResponseBuilder::success($listComments->toArray());
+    }
+
+    public function getAverageRatingCompany(int $id): JsonResponse
+    {
+        $averageRatingCompany = $this->commentRepository->getAverageRatingCompany($id);
+
+        $addAverageRatingCompany = $this->companyRepository->addAverageRatingCompany($averageRatingCompany, $id);
+
+        return ResponseBuilder::success($addAverageRatingCompany->toArray());
+    }
+
+    public function getListTopCompanies(): JsonResponse
+    {
+        $getListTopCompanies = $this->companyRepository->getListTopCompanies();
+
+        return ResponseBuilder::success($getListTopCompanies->toArray());
     }
 }

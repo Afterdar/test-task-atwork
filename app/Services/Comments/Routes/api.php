@@ -12,6 +12,10 @@ Route::prefix('v1')->group(
                 Route::post('/addComment/', [CommentController::class, 'addComment']);
                 Route::post('/updateComment/', [CommentController::class, 'updateComment']);
                 Route::delete('/deleteComment/', [CommentController::class, 'deleteComment']);
+
+                Route::get('/getListComments/{id}', [CommentController::class, 'getListCommentsCompany']);
+                Route::get('/getAverageRatingCompany/{id}', [CommentController::class, 'getAverageRatingCompany']);
+                Route::get('/getListTopCompanies', [CommentController::class, 'getListTopCompanies']);
             }
         );
     }
