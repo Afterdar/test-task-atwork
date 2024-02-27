@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65e85f9f959c0b087110331754d451cf",
+    "content-hash": "4299c6d626d3689e1d137ff5894aa80e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -707,6 +707,119 @@
                 }
             ],
             "time": "2023-10-12T05:21:21+00:00"
+        },
+        {
+            "name": "gerfey/repository",
+            "version": "0.1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gerfey/repository.git",
+                "reference": "b60b9d58a8e5c8e81e8c1a2753ae7999a9039605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gerfey/repository/zipball/b60b9d58a8e5c8e81e8c1a2753ae7999a9039605",
+                "reference": "b60b9d58a8e5c8e81e8c1a2753ae7999a9039605",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~7.0|^8.0|^9.0",
+                "illuminate/pagination": "~7.0|^8.0|^9.0",
+                "illuminate/support": "~7.0|^8.0|^9.0",
+                "php": "^7.1|^7.3|^7.4|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.5-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Gerfey\\Repository\\RepositoryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gerfey\\Repository\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Levchenkov",
+                    "email": "sanjia@live.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Creating a Laravel Repositories",
+            "homepage": "https://vk.com/gerfey",
+            "keywords": [
+                "Gerfey",
+                "database",
+                "eloquent",
+                "laravel",
+                "repositories",
+                "repository"
+            ],
+            "support": {
+                "issues": "https://github.com/Gerfey/repository/issues",
+                "source": "https://github.com/Gerfey/repository/tree/0.1.6.3"
+            },
+            "time": "2022-03-09T04:26:53+00:00"
+        },
+        {
+            "name": "gerfey/response-builder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gerfey/response-builder.git",
+                "reference": "b636e42412f15ecd0b6cb1d8c6f84d41463f82c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gerfey/response-builder/zipball/b636e42412f15ecd0b6cb1d8c6f84d41463f82c6",
+                "reference": "b636e42412f15ecd0b6cb1d8c6f84d41463f82c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^7.3|^7.4|^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gerfey\\ResponseBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Levchenkov",
+                    "email": "sanjia@live.ru"
+                }
+            ],
+            "description": "Implementing a Response Builder",
+            "keywords": [
+                "Gerfey",
+                "response-builder"
+            ],
+            "support": {
+                "issues": "https://github.com/Gerfey/response-builder/issues",
+                "source": "https://github.com/Gerfey/response-builder/tree/master"
+            },
+            "time": "2021-05-08T03:56:55+00:00"
         },
         {
             "name": "graham-campbell/result-type",
