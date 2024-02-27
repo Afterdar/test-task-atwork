@@ -1,5 +1,8 @@
 <?php
 
+use App\Services\Comments\CommentsServiceProvider;
+use App\Services\Company\CompanyServiceProvider;
+use App\Services\User\UserServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -176,6 +179,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        UserServiceProvider::class,
+        CompanyServiceProvider::class,
+        CommentsServiceProvider::class,
 
     ],
 
