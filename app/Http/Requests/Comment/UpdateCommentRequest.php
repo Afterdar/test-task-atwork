@@ -20,7 +20,7 @@ class UpdateCommentRequest extends BaseRequest
         return [
             'idCompany' => ['required','int'],
             'idUser' => ['required','int'],
-            'content' => ['required', 'min:15', 'max:550'],
+            'content' => ['required', 'string', 'min:15', 'max:550'],
             'rating' => ['required', 'int', 'min:1', 'max:10'],
         ];
     }
@@ -38,6 +38,7 @@ class UpdateCommentRequest extends BaseRequest
             'idUser.int' => $this->getMessage('int'),
 
             'content.required' => $this->getMessage('required'),
+            'content.string' => $this->getMessage('string'),
             'content.min' => $this->getMessage('min'),
             'content.max' => $this->getMessage('max'),
 

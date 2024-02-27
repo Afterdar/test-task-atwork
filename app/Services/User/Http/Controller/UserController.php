@@ -48,7 +48,7 @@ class UserController extends BaseController
         if ($updateUser === false) {
             Storage::deleteDirectory("public/avatars/$nameUser");
 
-            throw new Exception('Ошибка создания пользователя');
+            throw new Exception('Ошибка обновления пользователя, неверный id');
         }
 
         return ResponseBuilder::success(['Пользователь обновлен']);

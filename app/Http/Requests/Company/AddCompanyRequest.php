@@ -12,8 +12,8 @@ class AddCompanyRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','min:3', 'max:50'],
-            'content' => ['required','min:15', 'max:400'],
+            'name' => ['required','string', 'min:3', 'max:40'],
+            'content' => ['required', 'string', 'min:150', 'max:400'],
             'logo' => ['required', 'file', 'max:3072', 'mimes:png'],
         ];
     }
@@ -25,10 +25,12 @@ class AddCompanyRequest extends BaseRequest
     {
         return [
             'name.required' => $this->getMessage('required'),
+            'name.string' => $this->getMessage('string'),
             'name.max' => $this->getMessage('max'),
             'name.min' => $this->getMessage('min'),
 
             'content.required' => $this->getMessage('required'),
+            'content.string' => $this->getMessage('string'),
             'content.max' => $this->getMessage('max'),
             'content.min' => $this->getMessage('min'),
 

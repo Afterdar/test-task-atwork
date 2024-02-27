@@ -55,6 +55,7 @@ class CommentRepository extends Repository
     public function deleteComment(DeleteCommentRequest $deleteCommentRequest): bool
     {
         $comment = $this->createQueryBuilder()
+            ->where('id', '=', $deleteCommentRequest['idComment'])
             ->where('user_id', '=', $deleteCommentRequest['idUser'])
             ->where('company_id', '=', $deleteCommentRequest['idCompany'])
             ->first();

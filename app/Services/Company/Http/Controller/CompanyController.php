@@ -48,7 +48,7 @@ class CompanyController extends BaseController
         if ($updateCompany === false) {
             Storage::deleteDirectory("public/logos/$nameCompany");
 
-            throw new Exception('Ошибка создании компании');
+            throw new Exception('Ошибка обновления компании, неверный id');
         }
 
         return ResponseBuilder::success(['Компания обновлена']);
@@ -69,7 +69,7 @@ class CompanyController extends BaseController
         if ($result === true) {
             Storage::deleteDirectory("public/logos/$nameCompany");
         } else {
-            throw new Exception('Произошла ошибка удаления пользователя');
+            throw new Exception('Произошла ошибка удаления компании');
         }
 
         return ResponseBuilder::success(['Компания удалена']);

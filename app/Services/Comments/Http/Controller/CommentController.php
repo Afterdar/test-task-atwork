@@ -12,7 +12,6 @@ use Exception;
 use Gerfey\ResponseBuilder\ResponseBuilder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Storage;
 
 class CommentController extends BaseController
 {
@@ -38,7 +37,7 @@ class CommentController extends BaseController
     {
         $updateComment = $this->commentRepository->updateComment($updateCommentRequest);
 
-        if ($updateComment === false){
+        if ($updateComment === false) {
             throw new Exception('Ошибка обновления комментария, неверный id');
         }
 

@@ -20,6 +20,7 @@ class DeleteCommentRequest extends BaseRequest
         return [
             'idCompany' => ['required','int'],
             'idUser' => ['required','int'],
+            'idComment' => ['required','int'],
         ];
     }
 
@@ -34,6 +35,9 @@ class DeleteCommentRequest extends BaseRequest
 
             'idUser.required' => $this->getMessage('required'),
             'idUser.int' => $this->getMessage('int'),
+
+            'idComment.required' => $this->getMessage('required'),
+            'idComment.int' => $this->getMessage('int'),
         ];
     }
 }
